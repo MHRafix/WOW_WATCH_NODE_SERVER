@@ -150,6 +150,15 @@ async function run() {
             res.json(result);
         });
 
+        // Delete the watches from the database using delete api
+        app.delete('/watches/:id', async(req, res) => {
+            const id = req.params.id;
+            const query = { _id:ObjectId(id) };
+            const result = await watchesCollection.deleteOne(query);
+            console.log(result);
+            res.json(result);
+        });
+
 
     }
 
